@@ -134,5 +134,4 @@ if (version_compare(PHP_VERSION, '5.6') === -1) {
     require __DIR__ . '/vendor/autoload.php';
     //new bootstrapping, eventually this will replace all of the above.
     require $plugin_path . 'bootstrap.php';
-
 }

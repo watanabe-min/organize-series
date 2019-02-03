@@ -1,0 +1,43 @@
+<phpunit
+        bootstrap="bootstrap.php"
+        backupGlobals="false"
+        colors="true"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+>
+    <filter>
+        <whitelist>
+            <directory>../</directory>
+            <exclude>
+                <directory>../assets</directory>
+                <directory>../bin</directory>
+                <directory>../eslint</directory>
+                <directory>../lang</directory>
+                <directory>../node_modules</directory>
+                <directory>../tests</directory>
+                <directory>../vendor</directory>
+                <directory>../wp-assets</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite>
+            <directory suffix=".php">./testcases/</directory>
+        </testsuite>
+    </testsuites>
+    <listeners>
+        <listener class="SpeedTrapListener" file="includes/speed-trap-listener.php">
+            <arguments>
+                <array>
+                    <element key="slowThreshold">
+                        <integer>2000</integer>
+                    </element>
+                </array>
+            </arguments>
+        </listener>
+    </listeners>
+    <php>
+        <ini name="display_errors" value="1" />
+    </php>
+</phpunit>

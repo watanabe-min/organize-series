@@ -579,9 +579,9 @@ function latest_series($display = true, $args = '') {
 */
 function get_series_link( $series_id = '' ) {
 	global $orgseries;
-	$series_token = '%' . SERIES_QUERYVAR . '%';
+	$series_token = '%' . _getSeriesQueryVar() . '%';
 	if ( empty($series_id) || $series_id == null )
-		$series_slug = get_query_var(SERIES_QUERYVAR);
+		$series_slug = get_query_var(_getSeriesQueryVar());
 
 	if ( is_numeric($series_id) ) {
 		$series_slug = get_term_field( 'slug', $series_id, 'series' );
@@ -751,7 +751,7 @@ function the_series_title($series_id=0, $linked=TRUE, $display=FALSE) {
 function series_description($series_id = 0) {
 	global $orgseries;
 	if ( !$series_id ) {
-		$ser_var = get_query_var(SERIES_QUERYVAR);
+		$ser_var = get_query_var(_getSeriesQueryVar());
 		$ser_var = term_exists( $ser_var, 'series' );
 		if ( !empty($ser_var) )
 			$series_id = $ser_var['term_id'];
@@ -807,7 +807,7 @@ function is_series( $slug = '' ) {
 	global $wp_query;
 
 	if ( $wp_query instanceof WP_Query ) {
-		$series = get_query_var( SERIES_QUERYVAR );
+		$series = get_query_var( _getSeriesQueryVar() );
 	} else {
 		$series	= null;
 	}
@@ -890,7 +890,7 @@ function is_seriestoc() {
 	if (!isset($p['fit_width'])) $p['fit_width']=-1;
 	if (!isset($p['fit_height'])) $p['fit_height']=-1;
 	if (!isset($p['expand'])) $p['expand']=false;
-	if (!isset($p['series'])) $p['series']= get_query_var(SERIES_QUERYVAR);
+	if (!isset($p['series'])) $p['series']= get_query_var(_getSeriesQueryVar());
 	if (!isset($p['prefix'])) $p['prefix'] = '';
 	if (!isset($p['suffix'])) $p['suffix'] = '';
 	if (!isset($p['class'])) $p['class'] = 'series-icon-' . $p['series'];
@@ -951,8 +951,8 @@ function is_seriestoc() {
 */
 function single_series_title($prefix = '', $display = true) {
 	global $orgseries;
-	$series_id = get_query_var(SERIES_QUERYVAR);
-	$serchk = term_exists( $series_id, SERIES_QUERYVAR );
+	$series_id = get_query_var(_getSeriesQueryVar());
+	$serchk = term_exists( $series_id, _getSeriesQueryVar() );
 
 	if ( !empty($serchk) ) {
 		$series_id = $serchk['term_id'];
@@ -970,5 +970,14 @@ function single_series_title($prefix = '', $display = true) {
 				return $my_series_name;
 		}
 	}
+}
+
+
+/**
+ * Temporary... this will get refactored.
+ */
+function _getSeriesQueryVar() {
+    global $orgseries;
+    return defined('SERIES_QUERYVAR') ? SERIES_QUERYVAR : $orgseries->settings['series_custom_base'];
 }
 ?>
