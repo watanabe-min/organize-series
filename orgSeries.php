@@ -37,10 +37,10 @@ $os_version = '2.5.13.rc.000';
 //
 
 ######################################
-/* Changelog
-Visit @link http://wordpress.org/extend/plugins/organize-series/changelog/ for the list of all the changes in Organize Series.
-
-*/
+/** Changelog
+ * Visit @link http://wordpress.org/extend/plugins/organize-series/changelog/ for the list of all the changes in Organize Series.
+ *
+ */
 
 
 /**
