@@ -14,6 +14,7 @@ class ComposerStaticInit79ce04ec2215cbb374192f5c0ed11920
         'O' => 
         array (
             'OrganizeSeries\\' => 15,
+            'OrganizeSeriesTests\\' => 20,
         ),
     );
 
@@ -25,6 +26,10 @@ class ComposerStaticInit79ce04ec2215cbb374192f5c0ed11920
         'OrganizeSeries\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'OrganizeSeriesTests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests',
         ),
     );
 

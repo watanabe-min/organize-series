@@ -1,6 +1,14 @@
 <?php
-namespace OrganizeSeriesTests\bootstrap;
+namespace OrganizeSeriesTests\includes;
 
+/**
+ * CoreLoader
+ * Core loader for tests.
+ *
+ * @package OrganizeSeriesTests\bootstrap
+ * @author  Darren Ethier
+ * @since   $VID:$
+ */
 class CoreLoader
 {
     public function init()
