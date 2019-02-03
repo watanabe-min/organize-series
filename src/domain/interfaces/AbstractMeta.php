@@ -3,7 +3,6 @@
 namespace OrganizeSeries\domain\interfaces;
 
 use DomainException;
-use Exception;
 
 /**
  * AbstractMeta
@@ -12,7 +11,7 @@ use Exception;
  *
  * @package OrganizeSeries\domain\interfaces
  * @author  Darren Ethier
- * @since   1.0.0
+ * @since   2.5.9
  */
 abstract class AbstractMeta
 {
@@ -50,6 +49,12 @@ abstract class AbstractMeta
     protected $version;
 
 
+    /**
+     * AbstractMeta constructor.
+     *
+     * @param $plugin_file
+     * @param $version
+     */
     public function __construct($plugin_file, $version)
     {
         $this->file = $plugin_file;
@@ -62,7 +67,6 @@ abstract class AbstractMeta
 
     /**
      * @return string
-     * @throws DomainException
      */
     public function getFile()
     {
@@ -71,7 +75,6 @@ abstract class AbstractMeta
 
     /**
      * @return string
-     * @throws DomainException
      */
     public function getBasename()
     {
@@ -80,7 +83,6 @@ abstract class AbstractMeta
 
     /**
      * @return mixed
-     * @throws DomainException
      */
     public function getBasePath()
     {
@@ -89,7 +91,6 @@ abstract class AbstractMeta
 
     /**
      * @return string
-     * @throws DomainException
      */
     public function getBaseUrl()
     {
@@ -98,7 +99,6 @@ abstract class AbstractMeta
 
     /**
      * @return string
-     * @throws DomainException
      */
     public function getVersion()
     {

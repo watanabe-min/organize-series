@@ -2,10 +2,18 @@
 
 namespace OrganizeSeries\domain\interfaces;
 
+use LimitIterator;
 use OrganizeSeries\domain\exceptions\InvalidEntityException;
-use OrganizeSeries\domain\model\ClassOrInterfaceFullyQualifiedName;
 use SplObjectStorage;
 
+/**
+ * AbstractCollection
+ *
+ *
+ * @package OrganizeSeries\domain\interfaces
+ * @author  Darren Ethier
+ * @since   2.5.9
+ */
 class AbstractCollection extends SplObjectStorage implements CollectionInterface
 {
 	/**
@@ -17,11 +25,11 @@ class AbstractCollection extends SplObjectStorage implements CollectionInterface
     /**
      * AbstractCollection constructor.
      *
-     * @param ClassOrInterfaceFullyQualifiedName $class_or_interface_restricted_to
+     * @param string $class_or_interface_restricted_to
      */
-	public function __construct(ClassOrInterfaceFullyQualifiedName $class_or_interface_restricted_to)
+	public function __construct($class_or_interface_restricted_to)
 	{
-		$this->class_or_interface_restricted_to = $class_or_interface_restricted_to->__toString();
+		$this->class_or_interface_restricted_to = $class_or_interface_restricted_to;
 	}
 
     /**
@@ -52,7 +60,7 @@ class AbstractCollection extends SplObjectStorage implements CollectionInterface
      * @return bool
      */
     public function setIdentifier( $object, $identifier = null ) {
-        $identifier = ! empty( $identifier ) ? $identifier : spl_object_hash( $object );
+        $identifier = ! empty($identifier) ? $identifier : spl_object_hash( $object );
         $this->rewind();
         while ( $this->valid() ) {
             if ( $object === $this->current() ) {

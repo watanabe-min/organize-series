@@ -3,7 +3,7 @@
 namespace OrganizeSeries\domain\services\admin;
 
 use DomainException;
-use OrganizeSeries\application\Root;
+use OrganizeSeries\domain\exceptions\NonceFailException;
 use OrganizeSeries\domain\services\AjaxJsonResponseManager;
 use OrganizeSeries\domain\services\NoticeManager;
 use Exception;
@@ -27,7 +27,7 @@ use OrganizeSeries\domain\services\AssetRegistry;
  *
  * @package OrganizeSeries\domain\services\admin
  * @author  Darren Ethier
- * @since   1.0.0
+ * @since   2.5.9
  */
 class LicenseKeyFormManager implements HasHooksInterface
 {
@@ -205,12 +205,18 @@ class LicenseKeyFormManager implements HasHooksInterface
     }
 
 
+    /**
+     * @throws InvalidEntityException
+     */
     public function activateLicenseKey()
     {
         $this->doLicenseKeyRequest();
     }
 
 
+    /**
+     * @throws InvalidEntityException
+     */
     public function deactivateLicenseKey()
     {
         $this->doLicenseKeyRequest(false);
@@ -220,14 +226,15 @@ class LicenseKeyFormManager implements HasHooksInterface
     /**
      * @param bool $activation
      * @throws InvalidEntityException
+     * @throws NonceFailException
      */
     private function doLicenseKeyRequest($activation = true)
     {
         $state_change = $activation
             ? LicenseKeyRepository::ACTION_LICENSE_KEY_ACTIVATION
             : LicenseKeyRepository::ACTION_LICENSE_KEY_DEACTIVATION;
+        $request              = new LicenseKeyAjaxRequest($this->request);
         try {
-            $request              = new LicenseKeyAjaxRequest($this->request);
             $extension_identifier = $this->registered_extensions->getExtensionBySlug($request->getExtension());
             $this->license_key_repository->remoteLicenseKeyVerification(
                 $extension_identifier,

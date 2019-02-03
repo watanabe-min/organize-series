@@ -3,7 +3,6 @@
 namespace OrganizeSeries\domain\model;
 
 use OrganizeSeries\domain\exceptions\EntityNotFoundException;
-use OrganizeSeries\domain\exceptions\InvalidEntityException;
 use OrganizeSeries\domain\interfaces\AbstractCollection;
 
 /**
@@ -13,17 +12,13 @@ use OrganizeSeries\domain\interfaces\AbstractCollection;
  *
  * @package OrganizeSeries\domain\model
  * @author  Darren Ethier
- * @since   1.0.0
+ * @since   2.5.9
  */
 class RegisteredExtensions extends AbstractCollection {
 
     public function __construct()
     {
-        parent::__construct(
-            new ClassOrInterfaceFullyQualifiedName(
-                ExtensionIdentifier::class
-            )
-        );
+        parent::__construct(ExtensionIdentifier::class);
     }
 
 

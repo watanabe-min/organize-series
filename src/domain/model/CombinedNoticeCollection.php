@@ -10,16 +10,12 @@ use OrganizeSeries\domain\interfaces\AbstractNotice;
  *
  * @package OrganizeSeries\domain\model
  * @author  Darren Ethier
- * @since   1.0.0
+ * @since   2.5.9
  */
 class CombinedNoticeCollection extends AbstractCollection
 {
     public function __construct()
     {
-        parent::__construct(
-            new ClassOrInterfaceFullyQualifiedName(
-                AbstractNotice::class
-            )
-        );
+        parent::__construct(AbstractNotice::class);
     }
 }

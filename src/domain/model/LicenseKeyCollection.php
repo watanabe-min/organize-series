@@ -12,17 +12,17 @@ use OrganizeSeries\domain\interfaces\AbstractCollection;
  *
  * @package OrganizeSeries\domain\model
  * @author  Darren Ethier
- * @since   1.0.0
+ * @since   2.5.9
  */
 class LicenseKeyCollection extends AbstractCollection
 {
-	public function __construct()
+
+    /**
+     * LicenseKeyCollection constructor.
+     */
+    public function __construct()
 	{
-		parent::__construct(
-			new ClassOrInterfaceFullyQualifiedName(
-				'OrganizeSeries\domain\model\LicenseKey'
-			)
-		);
+		parent::__construct(LicenseKey::class);
 	}
 
 

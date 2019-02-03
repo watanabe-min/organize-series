@@ -2,8 +2,6 @@
 namespace OrganizeSeries\domain\services;
 
 use OrganizeSeries\domain\model\AjaxJsonResponse;
-use OrganizeSeries\domain\model\CombinedNoticeCollection;
-use OrganizeSeries\domain\model\SingleNoticeCollection;
 
 /**
  * AjaxJsonResponseManager
@@ -12,7 +10,7 @@ use OrganizeSeries\domain\model\SingleNoticeCollection;
  *
  * @package EventEspresso\domain\services
  * @author  Darren Ethier
- * @since   1.0.0
+ * @since   2.5.9
  */
 class AjaxJsonResponseManager
 {
