@@ -1,4 +1,5 @@
 <?php
+namespace OrganizeSeries;
 /*
 Plugin Name: Organize Series
 Plugin URI: http://organizeseries.com
@@ -8,13 +9,6 @@ Author: Darren Ethier
 Author URI: http://www.unfoldingneurons.com
 Text Domain: organize-series
 */
-
-### INSTALLATION/USAGE INSTRUCTIONS ###
-//	Installation and/or usage instructions for the Organize Series Plugin
-//	can be found at http://organizeseries.com
-$os_version = '2.5.13.rc.000';
-
-######################################
 
 ######################################
 // Organize Series Wordpress Plugin
@@ -41,18 +35,17 @@ $os_version = '2.5.13.rc.000';
  * Visit @link http://wordpress.org/extend/plugins/organize-series/changelog/ for the list of all the changes in Organize Series.
  *
  */
-
-
-/**
- * Ths file contains all requires/includes for all files packaged with orgSeries and has all the setup/initialization code for the WordPress plugin.
- *
- * @package Organize Series WordPress Plugin
- * @since 2.2
- */
-
+function getVersion()
+{
+    return apply_filters(
+        'FHOS__OrganizeSeries/getVersion',
+        '2.5.13.rc.000'
+    );
 }
 
 
+// include legacy for back-compat.php
+require_once plugin_dir_path(__FILE__) . 'back-compat/bootstrap.php';
 
 // composer autoload
 require __DIR__ . '/vendor/autoload.php';
