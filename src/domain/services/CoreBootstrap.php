@@ -1,12 +1,10 @@
 <?php
 namespace OrganizeSeries\domain\services;
 
-use DomainException;
 use InvalidArgumentException;
 use OrganizeSeries\application\IncomingRequest;
 use OrganizeSeries\application\Root;
 use OrganizeSeries\domain\exceptions\InvalidEntityException;
-use OrganizeSeries\domain\exceptions\InvalidInterfaceException;
 use OrganizeSeries\domain\interfaces\AbstractBootstrap;
 use OrganizeSeries\domain\model\HasHooksRoute;
 use OrganizeSeries\domain\model\RouteIdentifier;
@@ -27,7 +25,6 @@ class CoreBootstrap extends AbstractBootstrap
      * Load legacy.  Eventually we'll put in here the php version check rather than in the main file.
      *
      * @return bool
-     * @throws DomainException
      */
     protected function initialized()
     {
@@ -62,7 +59,7 @@ class CoreBootstrap extends AbstractBootstrap
      */
     protected function registerDependencies()
     {
-        //noop
+        // noop
     }
 
 
@@ -70,7 +67,6 @@ class CoreBootstrap extends AbstractBootstrap
      * Register routes for core.
      * @throws InvalidEntityException
      * @throws InvalidArgumentException
-     * @throws InvalidInterfaceException
      */
     protected function registerRoutes()
     {
