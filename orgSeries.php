@@ -54,50 +54,7 @@ $os_version = '2.5.13.rc.000';
 
 
 
-//check for php version requirements
-if (version_compare(PHP_VERSION, '5.6') === -1) {
-    /**
-     * Show notices about Organize Series requiring PHP 5.6 or higher.
-     */
-    add_action('admin_notices', 'os_version_requirement_notice');
-    function os_version_requirement_notice() {
-?>
-        <div class="notice notice-error">
-            <p>
-                <?php
-                    printf(
-                        esc_html__(
-                            'Organize Series %1$srequires PHP 5.6%2$s or greater.  Your website does not meet the requirements so the plugin is not fully activated.',
-                            'organize-series'
-                        ),
-                        '<strong>',
-                        '</strong>'
-                    );
-                    echo '<br>';
-                    printf(
-                        esc_html__(
-                            'Most web hosts provide an easy path to update the php version on your website.  We recommend updating to PHP 7 or greater. Before you update, you will want to make sure other plugins and your theme are compatible (see %1$sthis article for more info%2$s).',
-                            'organize-series'
-                        ),
-                        '<a href="https://kb.yoast.com/kb/site-ready-php-7/">',
-                        '</a>'
-                    );
-                ?>
-            </p>
-            <p>
-                <?php
-                    esc_html_e(
-                        'To remove this notice you can either deactivate the plugin or upgrade the php version on your server.',
-                        'organize-series'
-                    )
-                ?>
-            </p>
-        </div>
-<?php
-    }
-} else {
-    //composer autolaod
-    require __DIR__ . '/vendor/autoload.php';
-    //new bootstrapping, eventually this will replace all of the above.
-    require $plugin_path . 'bootstrap.php';
-}
+// composer autoload
+require __DIR__ . '/vendor/autoload.php';
+// new bootstrapping, eventually this will replace all of the above.
+require plugin_dir_path(__FILE__) . 'bootstrap.php';
